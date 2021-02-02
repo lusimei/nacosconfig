@@ -1,0 +1,16 @@
+server:
+  port: 56020 #启动端口 命令行注入
+  servlet:
+    context-path: /service2
+
+spring:
+  application:
+    name: service2
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848 #配置中心地址
+        #如果文件扩展名为properties,此处也需要改为相应的Properties
+        file-extension: yaml #dataId的名称就是application的name加file-extension     service1.yaml
+        namespace: 518e02a6-d1a1-4227-81e7-590a0043fa40 #开发环境
+        group: TEST_GROUP #测试组
