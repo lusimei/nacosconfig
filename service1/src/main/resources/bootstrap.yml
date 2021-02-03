@@ -9,10 +9,12 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 127.0.0.1:8848 #配置中心地址
+#        enabled: false #关闭配置
+#        server-addr: 127.0.0.1:8848 #配置中心地址
+        server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 #集群配置  （真实场景一般会用一个域名如：www.nacos.com 代替这三个地址）
         #如果文件扩展名为properties,此处也需要改为相应的properties
         file-extension: yaml #dataId的名称就是application的name加file-extension     service1.yaml
-        namespace: 518e02a6-d1a1-4227-81e7-590a0043fa40 #开发环境
+        namespace: 518e02a6-d1a1-4227-81e7-590a0043fa40 #开发环境 指定具体的namespace
         group: TEST_GROUP #测试组
 
         #扩展的配置文件配置
@@ -29,3 +31,10 @@ spring:
           group: REFRESH_GROUP
           refresh: true
 
+#        共享dataid模式只支持DEFAULT_GROUP,一般不常用
+#        shared-dataids: ext-config-common01.properties,ext-config-common02.properties
+#        refreshable-dataids: ext-config-common01.properties
+
+#        优先级：通过内部相关规则（应用名、扩展名）自动生成的Data Id配置
+#            > spring.cloud.nacos.config.ext-config[n].data-id(其中n的值越大，优先级越高)
+#            > shared-dataids多个共享Data Id配置

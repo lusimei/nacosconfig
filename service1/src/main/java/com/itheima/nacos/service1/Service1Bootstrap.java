@@ -20,8 +20,8 @@ public class Service1Bootstrap {
     @Autowired
     private WebApplicationContext webApplicationContext;
 
-    @Value("${common.name}")
-    private String config1;
+//    @Value("${common.name}")
+//    private String config1;
 
     @GetMapping("/configs")
     public String getConfigs(){
@@ -35,8 +35,7 @@ public class Service1Bootstrap {
         String age = webApplicationContext.getEnvironment().getProperty("user.age");
         String birthday = webApplicationContext.getEnvironment().getProperty("common.birthday");
         String email = webApplicationContext.getEnvironment().getProperty("common.email");
-        return email;
-//        return "name="+name+",age="+age;
+        return "name="+name+"  age="+age+"  birthday="+birthday+"  email="+email;
 //      return config1;
     }
 }
