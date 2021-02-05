@@ -20,13 +20,13 @@ public class Service1Bootstrap {
     @Autowired
     private WebApplicationContext webApplicationContext;
 
-//    @Value("${common.name}")
-//    private String config1;
+    @Value("${common.email}")
+    private String config1;
 
     @GetMapping("/configs")
     public String getConfigs(){
-        return webApplicationContext.getEnvironment().getProperty("common.name");
-//      return config1;
+//        return webApplicationContext.getEnvironment().getProperty("common.email");
+      return config1;
     }
 
     @GetMapping("/userinfo")
